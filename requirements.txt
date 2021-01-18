@@ -1,0 +1,17 @@
+Webpack (import/exports)
+    Babel - js transpiler
+    Scss - css makeup
+    Eslint - clear code
+    2 modes
+        -Development
+         Dev server (auto reload page),
+          Source Maps(for Scss files, debugger),
+           Eslint(clear code support, uni style),
+            Not Minified JS & CSS
+        -Production
+         Minified Code
+Gitflow
+    Production stage
+        1.0.0
+    Development stage
+        1.0.2
