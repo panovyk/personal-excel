@@ -6,6 +6,7 @@
     "node": true
   },
   "rules": {
+    "operator-linebreak": "off",
     "semi": "off",
     "comma-dangle": "off",
     "require-jsdoc": "off"
