@@ -3,16 +3,14 @@ const CODES = {
   Z: 90
 }
 
-// eslint-disable-next-line no-unused-vars
-function createCell() {
+function toCell() {
   return `
      <div class=cell contenteditable>
-     B2
      </div>
     `
 }
 
-function createCol(col) {
+function toColumn(col) {
   return `
     <div class=column>
     ${col}
@@ -20,13 +18,17 @@ function createCol(col) {
     `
 }
 
-function createRow() {
+function createRow(index, content) {
   return `
 <div class="row">
-<div class="row-info"></div>
-<div class="row-data"></div>
+<div class="row-info">${index ? index : ''}</div>
+<div class="row-data">${content}</div>
 </div>
 `
+}
+
+function toChar(_, index) {
+  return String.fromCharCode(CODES.A + index)
 }
 
 export function createTable(rowsCount = 15,) {
@@ -35,18 +37,18 @@ export function createTable(rowsCount = 15,) {
 
   const columns = new Array(columnsCont)
       .fill('')
-      .map((el, index) => {
-        return String.fromCharCode(CODES.A + index)
-      })
-      .map((el) => {
-        return createCol(el)
-      })
+      .map(toChar)
+      .map(toColumn)
       .join('')
 
-  rows.push(createRow(columns))
+  rows.push(createRow(null, columns))
 
   for (let i = 0; i < rowsCount; i++) {
-    rows.push(createRow())
+    const cells = new Array(columnsCont)
+        .fill('')
+        .map(toCell)
+        .join('')
+    rows.push(createRow(i+1, cells))
   }
 
   return rows.join('')
