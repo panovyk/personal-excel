@@ -17,16 +17,7 @@ export class Table extends ExcelComponent {
   onMousedown(event) {
     // starting resizing cell/row
     if (event.target.dataset.resize) {
+      const $target = $(event.target)
     }
-  }
-
-  onMousemove() {
-    // setting size of cell/row
-    console.log('mousemove');
-  }
-
-  onMouseup() {
-    // finishing resizing
-    console.log('mouseup');
   }
 }
